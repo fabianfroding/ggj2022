@@ -31,7 +31,6 @@ public class DarkWorldManager : MonoBehaviour
 
     public void ActivateDarkWorld(bool val)
     {
-        Debug.Log(val);
         darkWorldParentGO.SetActive(val);
     }
 }
