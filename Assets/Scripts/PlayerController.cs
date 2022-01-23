@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            GrayscaleManager.Instance.ChangeToGreyscale(!GrayscaleManager.Instance.IsInGrayscaleMode());
             DarkWorldManager.Instance.ActivateDarkWorld(!DarkWorldManager.Instance.IsActive());
         }
     }

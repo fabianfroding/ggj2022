@@ -54,11 +54,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\GreyscaleManager.cs" />
+    <Compile Include="Assets\Scripts\GrayscaleManager.cs" />
     <Compile Include="Assets\Scripts\DarkWorldManager.cs" />
+    <Compile Include="Assets\Scripts\PostProcess.cs" />
+    <Compile Include="Assets\Scripts\GrayscaleObject.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Asset Store\Fantasy Forest Set\Sources\Shaders\StandardSpecular_2Sided.shader" />
+     <None Include="Assets\Resources\Shaders\ObjectGreyscale.shader" />
+     <None Include="Assets\Asset Store\Fantasy Forest Set\Sources\Shaders\Vegitation_Greyscale.shader" />
      <None Include="Assets\Asset Store\Fantasy Forest Set\Sources\Shaders\Grid.shader" />
      <None Include="Assets\Asset Store\Fantasy Forest Set\Sources\Shaders\Vegitation.shader" />
     <Reference Include="UnityEngine">
