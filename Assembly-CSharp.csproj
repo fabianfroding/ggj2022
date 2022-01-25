@@ -62,11 +62,7 @@
     <Compile Include="Assets\Scripts\PlayerControls\PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>
-     <None Include="Assets\Asset Store\Fantasy Forest Set\Sources\Shaders\StandardSpecular_2Sided.shader" />
      <None Include="Assets\Resources\Shaders\ObjectGreyscale.shader" />
-     <None Include="Assets\Asset Store\Fantasy Forest Set\Sources\Shaders\Vegitation_Greyscale.shader" />
-     <None Include="Assets\Asset Store\Fantasy Forest Set\Sources\Shaders\Grid.shader" />
-     <None Include="Assets\Asset Store\Fantasy Forest Set\Sources\Shaders\Vegitation.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
