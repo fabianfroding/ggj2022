@@ -55,10 +55,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\GrayscaleObject.cs" />
     <Compile Include="Assets\Scripts\PlayerControls\DarkWorldController.cs" />
+    <Compile Include="Assets\Scripts\PlayerControls\MouseLook.cs" />
     <Compile Include="Assets\Scripts\PostProcess.cs" />
     <Compile Include="Assets\Scripts\GrayscaleManager.cs" />
     <Compile Include="Assets\Scripts\DarkWorldManager.cs" />
-    <Compile Include="Assets\Scripts\PlayerControls\MouseLook.cs" />
     <Compile Include="Assets\Scripts\PlayerControls\PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>
