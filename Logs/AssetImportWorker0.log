@@ -80,3 +80,4 @@ Received Import Request.
 Start importing Assets/Scripts/PlayerControls using Guid(24cde61a1685aa84eb67e75dce187531) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f861c33fbbb6a6ac5ed0bcd47ee4b008') in 0.003706 seconds
   Import took 0.005751 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
