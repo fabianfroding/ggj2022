@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\GrayscaleManager.cs" />
     <Compile Include="Assets\Scripts\DarkWorldManager.cs" />
     <Compile Include="Assets\Scripts\PlayerControls\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Enemies\Enemy.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Resources\Shaders\ObjectGreyscale.shader" />
