@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    [SerializeField] private float mouseSensitivity = 100f;
+    [SerializeField] private float mouseSensitivity = 2f;
     private Transform playerBody;
     private float xRotation = 0f;
 
@@ -18,8 +18,8 @@ public class MouseLook : MonoBehaviour
 
     private void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
