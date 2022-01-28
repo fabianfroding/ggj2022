@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ColorGrad
   m_EditorClassIdentifier: 
   colorMode: 3
-  topLeft: {r: 0.39417946, g: 0.7728141, b: 0.8113208, a: 1}
-  topRight: {r: 0.39417946, g: 0.7728141, b: 0.8113208, a: 1}
-  bottomLeft: {r: 0.23067594, g: 0.14684941, b: 0.41509432, a: 1}
-  bottomRight: {r: 0.23137257, g: 0.14509805, b: 0.4156863, a: 1}
+  topLeft: {r: 0.19188325, g: 0.65146303, b: 0.8301887, a: 1}
+  topRight: {r: 0.19188325, g: 0.65146303, b: 0.8301887, a: 1}
+  bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+  bottomRight: {r: 1, g: 1, b: 1, a: 1}
