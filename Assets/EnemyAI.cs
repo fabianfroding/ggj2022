@@ -12,40 +12,67 @@ public class EnemyAI : MonoBehaviour
     private Collider closestTarget;
 
     public LayerMask playerMask = 6;
-    float distance = 99;
 
     bool playerInSightRange;
 
+    DeathScript deathScript;
+    [SerializeField]
+    public Animator anim;
+
     void Start()
     {
-        //player = GameObject.Find("Player").transform;
+        deathScript = GameObject.Find("DeathManager").GetComponent<DeathScript>();
         agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
-        if(player != null)
-            ChasePlayer();
+        if(deathScript.alive)
+        {
+            if (player != null)
+                ChasePlayer();
+            else
+            {
+                Idle();
+            }
+
+            FindTarget();
+
+            //playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerMask);
+        }
         else
         {
-            Idle();
+            agent.enabled = false;
+            KillingPlayer();
         }
 
-        FindTarget();
-
-
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerMask);
     }
+
+    private void OnEnable()
+    {
+        player = null;
+        print("Hey brah");
+    }
+
     void ChasePlayer()
     {
+        anim.SetBool("Walking", true);
+
         agent.enabled = true;
         if (player != null)
             agent.SetDestination(player.position);
 
     }
 
+    void KillingPlayer()
+    {
+        anim.SetBool("Killing", true);
+        anim.SetBool("Walking", false);
+    }
+
     void Idle()
     {
+        anim.SetBool("Walking", false);
         agent.enabled = false;
     }
 
@@ -65,13 +92,6 @@ public class EnemyAI : MonoBehaviour
                 player = null;
         }
     }
-
-    void ResetTarget()
-    {
-        distance = 99;
-        player = null;
-    }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
