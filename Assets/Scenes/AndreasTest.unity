@@ -347,6 +347,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7411752417541828106, guid: db99b2fbfabb171489594a6f07d33e5b, type: 3}
   m_PrefabInstance: {fileID: 198661876}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &343956506 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 30228961148694061, guid: e81c5302fd6c67b4ebcb4fc5c4810053, type: 3}
+  m_PrefabInstance: {fileID: 517883565}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d19e58a587cca944b2e1a8eb08ae135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &432135533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -471,6 +482,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7411752417541828106, guid: db99b2fbfabb171489594a6f07d33e5b, type: 3}
   m_PrefabInstance: {fileID: 488491927}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &489827298 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 30228959136844615, guid: e81c5302fd6c67b4ebcb4fc5c4810053, type: 3}
+  m_PrefabInstance: {fileID: 517883565}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &489827299 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 30228959136844614, guid: e81c5302fd6c67b4ebcb4fc5c4810053, type: 3}
+  m_PrefabInstance: {fileID: 517883565}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5c54d8dae9cf774fa887a9bd4b8a708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &492722027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1434,7 +1461,7 @@ GameObject:
   - component: {fileID: 899836930}
   - component: {fileID: 899836929}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DeathManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1452,6 +1479,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ce61afa9b2b4541afcf8aaba1f8276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouse: {fileID: 489827299}
+  player: {fileID: 343956506}
+  cameraTrans: {fileID: 489827298}
 --- !u!4 &899836930
 Transform:
   m_ObjectHideFlags: 0
