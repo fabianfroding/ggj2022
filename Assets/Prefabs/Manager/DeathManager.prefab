@@ -44,8 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alive: 1
-  mouse: {fileID: 0}
-  playerObject: {fileID: 0}
-  cameraTrans: {fileID: 0}
   claw: {fileID: 0}
   capturer: {fileID: 0}
