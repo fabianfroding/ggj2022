@@ -5,6 +5,7 @@ public class DarkWorldManager : MonoBehaviour
     [SerializeField] private GameObject darkWorldParentGO;
     [SerializeField] private GameObject lightWorldParentGO;
 
+
     private static DarkWorldManager instance;
     public static DarkWorldManager Instance
     {
