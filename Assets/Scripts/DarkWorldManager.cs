@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DarkWorldManager : MonoBehaviour
 {
     [SerializeField] private GameObject darkWorldParentGO;
+    [SerializeField] private GameObject lightWorldParentGO;
 
 
     private static DarkWorldManager instance;
@@ -20,9 +19,10 @@ public class DarkWorldManager : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void Start()
     {
         darkWorldParentGO.SetActive(false);
+        lightWorldParentGO.SetActive(true);
     }
 
     public bool IsActive()
@@ -32,6 +32,16 @@ public class DarkWorldManager : MonoBehaviour
 
     public void ActivateDarkWorld(bool val)
     {
-        darkWorldParentGO.SetActive(val);  
+        darkWorldParentGO.SetActive(val);
+        lightWorldParentGO.SetActive(!val);
+
+        if (val)
+        {
+            AmbienceSound.Instance.PlayDarkWorldAmbience();
+        }
+        else
+        {
+            AmbienceSound.Instance.PlayLightWorldAmbience();
+        }
     }
 }
