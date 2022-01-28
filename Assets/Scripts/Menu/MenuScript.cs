@@ -5,18 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void PlayGame()
     {
-        
+        SceneManager.LoadScene(sceneName: "SampleScene");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void QuitGame()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            SceneManager.LoadScene(sceneName: "SampleScene");
-        }
+        Application.Quit();
     }
 }
