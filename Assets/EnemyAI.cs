@@ -16,6 +16,8 @@ public class EnemyAI : MonoBehaviour
     bool playerInSightRange;
 
     DeathScript deathScript;
+    [SerializeField]
+    public Animator anim;
 
     void Start()
     {
@@ -41,19 +43,36 @@ public class EnemyAI : MonoBehaviour
         else
         {
             agent.enabled = false;
+            KillingPlayer();
         }
 
     }
+
+    private void OnEnable()
+    {
+        player = null;
+        print("Hey brah");
+    }
+
     void ChasePlayer()
     {
+        anim.SetBool("Walking", true);
+
         agent.enabled = true;
         if (player != null)
             agent.SetDestination(player.position);
 
     }
 
+    void KillingPlayer()
+    {
+        anim.SetBool("Killing", true);
+        anim.SetBool("Walking", false);
+    }
+
     void Idle()
     {
+        anim.SetBool("Walking", false);
         agent.enabled = false;
     }
 

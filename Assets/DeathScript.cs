@@ -13,7 +13,8 @@ public class DeathScript : MonoBehaviour
     [SerializeField]
     GameObject claw;
 
-    public Transform capturer;
+    public GameObject capturer;
+    EnemyAI captureScript;
 
     float timer = 0;
     float pickUpInterval = 2f;
@@ -55,12 +56,18 @@ public class DeathScript : MonoBehaviour
         Vector3 playerPos = playerObject.transform.position;
         timer += Time.deltaTime;
 
-        if(timer >= pickUpInterval && timer < 5)
+        playerObject.transform.position = new Vector3(playerPos.x, 2.8f, playerPos.z);
+
+        if (timer >= pickUpInterval)
         {
-            playerObject.transform.position = new Vector3(playerPos.x, 2.8f, playerPos.z);
-            playerObject.transform.rotation = Quaternion.RotateTowards(playerObject.transform.localRotation, Quaternion.Inverse(capturer.rotation), 200 * Time.deltaTime);
+            //playerObject.transform.position = new Vector3(playerPos.x, 2.8f, playerPos.z);
+            playerObject.transform.rotation = Quaternion.RotateTowards(playerObject.transform.localRotation, Quaternion.Inverse(capturer.transform.rotation), 200 * Time.deltaTime);
             playerObject.transform.LookAt(capturer.transform);
         }
-
+        else if(timer >= 5)
+        {
+            captureScript = capturer.GetComponent<EnemyAI>();
+            captureScript.anim.SetBool("KillingDone", true);
+        }
     }
 }

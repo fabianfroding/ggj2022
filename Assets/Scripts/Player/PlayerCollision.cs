@@ -9,7 +9,7 @@ public class PlayerCollision : MonoBehaviour
             GameObject capturer = collision.gameObject;
             DeathScript deathManager = GameObject.Find("DeathManager").GetComponent<DeathScript>();
             deathManager.alive = false;
-            deathManager.capturer = capturer.transform;
+            deathManager.capturer = capturer;
 
             //Camera.main.transform.parent = null;
             //gameObject.SetActive(false);
