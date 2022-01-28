@@ -6,6 +6,7 @@ public class DarkWorldManager : MonoBehaviour
 {
     [SerializeField] private GameObject darkWorldParentGO;
 
+
     private static DarkWorldManager instance;
     public static DarkWorldManager Instance
     {
@@ -31,6 +32,6 @@ public class DarkWorldManager : MonoBehaviour
 
     public void ActivateDarkWorld(bool val)
     {
-        darkWorldParentGO.SetActive(val);
+        darkWorldParentGO.SetActive(val);  
     }
 }
