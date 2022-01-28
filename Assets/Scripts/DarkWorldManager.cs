@@ -33,5 +33,14 @@ public class DarkWorldManager : MonoBehaviour
     {
         darkWorldParentGO.SetActive(val);
         lightWorldParentGO.SetActive(!val);
+
+        if (val)
+        {
+            AmbienceSound.Instance.PlayDarkWorldAmbience();
+        }
+        else
+        {
+            AmbienceSound.Instance.PlayLightWorldAmbience();
+        }
     }
 }
