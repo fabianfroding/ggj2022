@@ -12,29 +12,37 @@ public class EnemyAI : MonoBehaviour
     private Collider closestTarget;
 
     public LayerMask playerMask = 6;
-    float distance = 99;
 
     bool playerInSightRange;
 
+    DeathScript deathScript;
+
     void Start()
     {
-        //player = GameObject.Find("Player").transform;
+        deathScript = GameObject.Find("DeathManager").GetComponent<DeathScript>();
         agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
-        if(player != null)
-            ChasePlayer();
+        if(deathScript.alive)
+        {
+            if (player != null)
+                ChasePlayer();
+            else
+            {
+                Idle();
+            }
+
+            FindTarget();
+
+            //playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerMask);
+        }
         else
         {
-            Idle();
+            agent.enabled = false;
         }
 
-        FindTarget();
-
-
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerMask);
     }
     void ChasePlayer()
     {
@@ -65,13 +73,6 @@ public class EnemyAI : MonoBehaviour
                 player = null;
         }
     }
-
-    void ResetTarget()
-    {
-        distance = 99;
-        player = null;
-    }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

@@ -6,9 +6,14 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Camera.main.transform.parent = null;
-            gameObject.SetActive(false);
-            RespawnPos.Instance.RespawnPlayer(gameObject);
+            GameObject capturer = collision.gameObject;
+            DeathScript deathManager = GameObject.Find("DeathManager").GetComponent<DeathScript>();
+            deathManager.alive = false;
+            deathManager.capturer = capturer.transform;
+
+            //Camera.main.transform.parent = null;
+            //gameObject.SetActive(false);
+            //RespawnPos.Instance.RespawnPlayer(gameObject);
         }
     }
 }
