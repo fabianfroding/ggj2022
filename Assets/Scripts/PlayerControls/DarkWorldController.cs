@@ -21,7 +21,7 @@ public class DarkWorldController : MonoBehaviour
 
     private IEnumerator switchEnvironments()
     {
-        blackoutScreenAnim.Play("crossfadeStart");
+        blackoutScreenAnim.Play("CrossFadeStart");
         yield return new WaitForSeconds(waitTime);
         GrayscaleManager.Instance.ChangeToGreyscale(!GrayscaleManager.Instance.IsInGrayscaleMode());
         DarkWorldManager.Instance.ActivateDarkWorld(!DarkWorldManager.Instance.IsActive());
