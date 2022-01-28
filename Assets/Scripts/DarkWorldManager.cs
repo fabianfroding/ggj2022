@@ -19,7 +19,7 @@ public class DarkWorldManager : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void Start()
     {
         darkWorldParentGO.SetActive(false);
     }
