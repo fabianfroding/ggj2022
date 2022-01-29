@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Sample-RivinduTest.unity
+    guid: 68c33594d5ceae14e8059dc5d526c566
+  - enabled: 1
+    path: Assets/Scenes/Game Over.unity
+    guid: bf4ea3ea0e7364940aa26297987bba99
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 196bde756dc003c46b641b0d4835720a
   m_configObjects: {}
