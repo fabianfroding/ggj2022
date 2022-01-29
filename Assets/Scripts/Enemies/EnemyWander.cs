@@ -31,6 +31,7 @@ public class EnemyWander : MonoBehaviour
 
     private void Start()
     {
+        SetComponentVariables();
         StartCoroutine(Wander());
     }
 
@@ -60,6 +61,7 @@ public class EnemyWander : MonoBehaviour
                 transform.position.x + Random.Range(15f, 25f),
                 transform.position.y,
                 transform.position.z + Random.Range(15f, 25f));
+            targetPos = GameObject.Find("Player").transform.position;
 
             anim.SetBool("Walking", true);
             agent.enabled = false;
