@@ -35,6 +35,7 @@ GameObject:
   - component: {fileID: 1771843573509338418}
   - component: {fileID: 1771843573509338383}
   - component: {fileID: 1771843573509338376}
+  - component: {fileID: 9215657025245142182}
   m_Layer: 0
   m_Name: Enemy AI
   m_TagString: Enemy
@@ -187,6 +188,20 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 64
+  anim: {fileID: 498680842}
+--- !u!114 &9215657025245142182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771843573509338416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e4fc3fa964b294291e75e73d7f4520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wanderInterval: 14
   anim: {fileID: 498680842}
 --- !u!1 &7684623020132652887
 GameObject:
