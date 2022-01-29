@@ -583,7 +583,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   darkWorldSwitckKey: 9
-  darkWorldParentGO: {fileID: 0}
   waitTime: 2
   blackoutScreenAnim: {fileID: 0}
 --- !u!114 &30228961148694034
@@ -598,6 +597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d79f883f6308f46829d5c6aac91a8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDeathSoundPrefab: {fileID: 1337874197944274456, guid: e2c3377184b9e004885890667694566a, type: 3}
 --- !u!95 &1540510732
 Animator:
   serializedVersion: 3
