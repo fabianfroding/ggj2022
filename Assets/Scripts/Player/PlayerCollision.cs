@@ -9,15 +9,12 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] float waitTime = 2f;
     //Adding the animator component of the Blackout Screen
     [SerializeField] private Animator blackoutScreenAnim;
+    [SerializeField] private GameObject playerDeathSoundPrefab;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            //commented the lines and added the Coroutine method
-            //Camera.main.transform.parent = null;
-            //gameObject.SetActive(false);
-            //RespawnPos.Instance.RespawnPlayer(gameObject);
             StartCoroutine(transitionToGameOverScreen());
         }
     }
