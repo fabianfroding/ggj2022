@@ -9,6 +9,11 @@ public class DarkWorldManager : MonoBehaviour
     [SerializeField] private AudioSource enterDarkWorldSound;
 
     private static DarkWorldManager instance;
+
+    [SerializeField]
+    Skybox skyboxDark;
+    [SerializeField]
+    Skybox skyboxLight;
     public static DarkWorldManager Instance
     {
         get
@@ -52,11 +57,13 @@ public class DarkWorldManager : MonoBehaviour
 
         if (val)
         {
+            RenderSettings.skybox = mat2;
             enterDarkWorldSound.Play();
             AmbienceSound.Instance.PlayDarkWorldAmbience();
         }
         else
         {
+            RenderSettings.skybox = mat2;
             enterLightWorldSound.Play();
             AmbienceSound.Instance.PlayLightWorldAmbience();
         }
