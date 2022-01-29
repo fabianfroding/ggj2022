@@ -18,6 +18,19 @@ public class DarkWorldManager : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        if (darkWorldParentGO == null)
+        {
+            darkWorldParentGO = GameObject.Find("DarkWorld");
+        }
+        
+        if (lightWorldParentGO == null)
+        {
+            lightWorldParentGO = GameObject.Find("LightWorld");
+        }
+    }
+
     private void Start()
     {
         darkWorldParentGO.SetActive(false);
