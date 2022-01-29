@@ -46,3 +46,5 @@ MonoBehaviour:
   alive: 1
   claw: {fileID: 0}
   capturer: {fileID: 0}
+  dropInterval: 5
+  scareInterval: 3

@@ -31,13 +31,13 @@ public class EnemyAI : MonoBehaviour
     {
         deathScript = GameObject.Find("DeathManager").GetComponent<DeathScript>();
         agent = GetComponent<NavMeshAgent>();
-        creepyFace.SetActive(false);
+        ScareEvent(false);
     }
 
-    public void ScareEvent()
+    public void ScareEvent(bool active)
     {
-        creepyFace.SetActive(true);
-        graphics.SetActive(false);
+        creepyFace.SetActive(active);
+        graphics.SetActive(!active);
     }
 
     void Update()
