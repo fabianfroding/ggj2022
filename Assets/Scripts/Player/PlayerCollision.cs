@@ -11,18 +11,16 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private Animator blackoutScreenAnim;
     [SerializeField] private GameObject playerDeathSoundPrefab;
 
+    DeathScript deathScript;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            StartCoroutine(transitionToGameOverScreen());
+            deathScript = GameObject.Find("DeathManager").GetComponent<DeathScript>();
+            deathScript.alive = false;
+            deathScript.capturer = collision.gameObject;
+            //StartCoroutine(transitionToGameOverScreen());
         }
-    }
-
-    private IEnumerator transitionToGameOverScreen()
-    {
-        blackoutScreenAnim.Play("CrossFadeStart");
-        yield return new WaitForSeconds(waitTime);
-        SceneManager.LoadScene(sceneName: "Game Over");
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DeathScript : MonoBehaviour
 {
@@ -26,11 +27,22 @@ public class DeathScript : MonoBehaviour
     [SerializeField]
     float scareInterval = 3;
 
+    float gameOverInterval = 7;
+
+    [SerializeField]
+    GameObject playerDeathSoundPrefab;
+
+    //added wait time
+    [SerializeField] float waitTime = 2f;
+    //Adding the animator component of the Blackout Screen
+    [SerializeField] private Animator blackoutScreenAnim;
 
     void Start()
     {
         mouseObject = GameObject.Find("Main Camera");
         playerObject = GameObject.Find("Player");
+        if(claw == null)
+            claw = GameObject.Find("The Paw!");
         player = playerObject.GetComponent<PlayerMovement>();
         playerDeath = playerObject.GetComponent<PlayerDeathHandler>();
 
@@ -80,10 +92,15 @@ public class DeathScript : MonoBehaviour
             {
                 ScareCam();
             }
-            else if(timer > dropInterval)
+            else if(timer > dropInterval && timer < gameOverInterval)
             {
                 NormalCam();
+
                 playerDeath.DisconnectSkeleton(true);
+            }
+            else if(timer > gameOverInterval)
+            {
+                StartCoroutine(transitionToGameOverScreen());
             }
             else
             {
@@ -109,6 +126,8 @@ public class DeathScript : MonoBehaviour
         Camera.main.orthographic = true;
         Camera.main.orthographicSize = Random.Range(0.5f, 0.8f);
         captureScript.ScareEvent(true);
+        if (GameObject.Find("SND_Player_Death(Clone)") == null)
+            GameObject.Instantiate(playerDeathSoundPrefab);
     }
 
     void NormalCam()
@@ -116,8 +135,10 @@ public class DeathScript : MonoBehaviour
         captureScript.ScareEvent(false);
     }
 
-    void DeathCam()
+    private IEnumerator transitionToGameOverScreen()
     {
-        
+        blackoutScreenAnim.Play("CrossFadeStart");
+        yield return new WaitForSeconds(waitTime);
+        SceneManager.LoadScene(sceneName: "Game Over");
     }
 }
