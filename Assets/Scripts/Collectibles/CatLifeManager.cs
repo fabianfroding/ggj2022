@@ -26,7 +26,8 @@ public class CatLifeManager : MonoBehaviour
     public void AddCollectedCat()
     {
         collectedCats++;
-        UICatLives.Instance.UpdateUI(collectedCats, this.collectableCats);
+        //UICatLives.Instance.UpdateUI(collectedCats, this.collectableCats);
+        StatueScript.Instance.SetCollected(collectedCats);
     }
 
     private int CountCollectableCats()
