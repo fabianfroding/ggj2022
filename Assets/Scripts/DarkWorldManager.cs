@@ -14,6 +14,9 @@ public class DarkWorldManager : MonoBehaviour
     Skybox skyboxDark;
     [SerializeField]
     Skybox skyboxLight;
+
+    [SerializeField]
+    float test;
     public static DarkWorldManager Instance
     {
         get
@@ -57,13 +60,13 @@ public class DarkWorldManager : MonoBehaviour
 
         if (val)
         {
-            RenderSettings.skybox = mat2;
+            //RenderSettings.skybox = skyboxDark;
             enterDarkWorldSound.Play();
             AmbienceSound.Instance.PlayDarkWorldAmbience();
         }
         else
         {
-            RenderSettings.skybox = mat2;
+            //RenderSettings.skybox = skyboxLight;
             enterLightWorldSound.Play();
             AmbienceSound.Instance.PlayLightWorldAmbience();
         }
