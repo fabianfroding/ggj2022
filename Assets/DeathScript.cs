@@ -5,27 +5,38 @@ using UnityEngine;
 public class DeathScript : MonoBehaviour
 {
     public bool alive = true;
-    MouseLook mouse;
     GameObject playerObject;
     GameObject mouseObject;
     PlayerMovement player;
+    PlayerDeathHandler playerDeath;
+    MouseLook mouseCam;
 
     [SerializeField]
     GameObject claw;
 
     public GameObject capturer;
     EnemyAI captureScript;
+    Camera cam;
 
     float timer = 0;
     float pickUpInterval = 2f;
+
+    [SerializeField]
+    float dropInterval = 5;
+    [SerializeField]
+    float scareInterval = 3;
 
 
     void Start()
     {
         mouseObject = GameObject.Find("Main Camera");
         playerObject = GameObject.Find("Player");
-        mouse = mouseObject.GetComponent<MouseLook>();
         player = playerObject.GetComponent<PlayerMovement>();
+        playerDeath = playerObject.GetComponent<PlayerDeathHandler>();
+
+        mouseCam = mouseObject.GetComponent<MouseLook>();
+
+        claw.SetActive(false);
     }
 
     // Update is called once per frame
@@ -41,9 +52,9 @@ public class DeathScript : MonoBehaviour
 
     void AliveBool(bool alive)
     {
-        mouse.enabled = alive;
         player.enabled = alive;
-        claw.SetActive(!alive);
+        mouseCam.enabled = alive;
+        //claw.SetActive(!alive);
         if (!alive)
         {
             DeathAnim();
@@ -52,22 +63,61 @@ public class DeathScript : MonoBehaviour
 
     void DeathAnim()
     {
-        claw.SetActive(true);
         Vector3 playerPos = playerObject.transform.position;
         timer += Time.deltaTime;
 
-        playerObject.transform.position = new Vector3(playerPos.x, 2.8f, playerPos.z);
+
+        captureScript = capturer.GetComponent<EnemyAI>();
+
+        if(timer <= scareInterval)
+            claw.SetActive(true);
+        else
+            claw.SetActive(false);
 
         if (timer >= pickUpInterval)
         {
-            //playerObject.transform.position = new Vector3(playerPos.x, 2.8f, playerPos.z);
-            playerObject.transform.rotation = Quaternion.RotateTowards(playerObject.transform.localRotation, Quaternion.Inverse(capturer.transform.rotation), 200 * Time.deltaTime);
-            playerObject.transform.LookAt(capturer.transform);
+            if(timer >= scareInterval && timer <= dropInterval)
+            {
+                ScareCam();
+            }
+            else if(timer > dropInterval)
+            {
+                NormalCam();
+                playerDeath.DisconnectSkeleton(true);
+            }
+            else
+            {
+                NormalCam();
+            }
         }
         else if(timer >= 5)
         {
-            captureScript = capturer.GetComponent<EnemyAI>();
             captureScript.anim.SetBool("KillingDone", true);
         }
+
+        if(timer <= 5)
+        {
+            playerDeath.Gripped(true);
+        }
+        else
+            playerDeath.Gripped(false);
+    }
+
+    void ScareCam()
+    {
+        mouseObject.transform.LookAt(captureScript.deathTarget.transform);
+        Camera.main.orthographic = true;
+        Camera.main.orthographicSize = Random.Range(0.5f, 0.8f);
+        captureScript.ScareEvent(true);
+    }
+
+    void NormalCam()
+    {
+        captureScript.ScareEvent(false);
+    }
+
+    void DeathCam()
+    {
+        
     }
 }

@@ -19,10 +19,25 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     public Animator anim;
 
+
+    public GameObject deathTarget;
+    [SerializeField]
+    GameObject creepyFace;
+    [SerializeField]
+    GameObject graphics;
+    
+
     void Start()
     {
         deathScript = GameObject.Find("DeathManager").GetComponent<DeathScript>();
         agent = GetComponent<NavMeshAgent>();
+        ScareEvent(false);
+    }
+
+    public void ScareEvent(bool active)
+    {
+        creepyFace.SetActive(active);
+        graphics.SetActive(!active);
     }
 
     void Update()
@@ -51,7 +66,6 @@ public class EnemyAI : MonoBehaviour
     private void OnEnable()
     {
         player = null;
-        print("Hey brah");
     }
 
     void ChasePlayer()
