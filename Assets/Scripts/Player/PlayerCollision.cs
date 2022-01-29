@@ -20,6 +20,7 @@ public class PlayerCollision : MonoBehaviour
             deathScript = GameObject.Find("DeathManager").GetComponent<DeathScript>();
             deathScript.alive = false;
             deathScript.capturer = collision.gameObject;
+            GameObject.Find("Player").GetComponent<PlayerMovement>().StopFootstepsSound();
             //StartCoroutine(transitionToGameOverScreen());
         }
     }
