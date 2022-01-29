@@ -4,7 +4,6 @@ using UnityEngine;
 public class DarkWorldController : MonoBehaviour
 {
     [SerializeField] KeyCode darkWorldSwitckKey;
-    [SerializeField] GameObject darkWorldParentGO;
     //added wait time
     [SerializeField] float waitTime = 2f;
 
@@ -15,13 +14,13 @@ public class DarkWorldController : MonoBehaviour
     {
         if (Input.GetKeyDown(darkWorldSwitckKey))
         {
-            StartCoroutine(switchEnvironments());
+            StartCoroutine(SwitchEnvironments());
         }
     }
 
-    private IEnumerator switchEnvironments()
+    private IEnumerator SwitchEnvironments()
     {
-        blackoutScreenAnim.Play("crossfadeStart");
+        blackoutScreenAnim.Play("CrossFadeStart");
         yield return new WaitForSeconds(waitTime);
         GrayscaleManager.Instance.ChangeToGreyscale(!GrayscaleManager.Instance.IsInGrayscaleMode());
         DarkWorldManager.Instance.ActivateDarkWorld(!DarkWorldManager.Instance.IsActive());

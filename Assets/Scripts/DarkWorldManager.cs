@@ -5,7 +5,6 @@ public class DarkWorldManager : MonoBehaviour
     [SerializeField] private GameObject darkWorldParentGO;
     [SerializeField] private GameObject lightWorldParentGO;
 
-
     private static DarkWorldManager instance;
     public static DarkWorldManager Instance
     {
@@ -16,6 +15,19 @@ public class DarkWorldManager : MonoBehaviour
                 instance = FindObjectOfType<DarkWorldManager>();
             }
             return instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (darkWorldParentGO == null)
+        {
+            darkWorldParentGO = GameObject.Find("DarkWorld");
+        }
+        
+        if (lightWorldParentGO == null)
+        {
+            lightWorldParentGO = GameObject.Find("LightWorld");
         }
     }
 

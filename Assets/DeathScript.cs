@@ -4,18 +4,28 @@ using UnityEngine;
 
 public class DeathScript : MonoBehaviour
 {
-    public static bool alive = true;
-    [SerializeField]
+    public bool alive = true;
     MouseLook mouse;
-    [SerializeField]
+    GameObject playerObject;
+    GameObject mouseObject;
     PlayerMovement player;
+
     [SerializeField]
-    Transform cameraTrans;
+    GameObject claw;
+
+    public GameObject capturer;
+    EnemyAI captureScript;
+
+    float timer = 0;
+    float pickUpInterval = 2f;
 
 
     void Start()
     {
-        
+        mouseObject = GameObject.Find("Main Camera");
+        playerObject = GameObject.Find("Player");
+        mouse = mouseObject.GetComponent<MouseLook>();
+        player = playerObject.GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -33,7 +43,31 @@ public class DeathScript : MonoBehaviour
     {
         mouse.enabled = alive;
         player.enabled = alive;
+        claw.SetActive(!alive);
+        if (!alive)
+        {
+            DeathAnim();
+        }
+    }
 
+    void DeathAnim()
+    {
+        claw.SetActive(true);
+        Vector3 playerPos = playerObject.transform.position;
+        timer += Time.deltaTime;
 
+        playerObject.transform.position = new Vector3(playerPos.x, 2.8f, playerPos.z);
+
+        if (timer >= pickUpInterval)
+        {
+            //playerObject.transform.position = new Vector3(playerPos.x, 2.8f, playerPos.z);
+            playerObject.transform.rotation = Quaternion.RotateTowards(playerObject.transform.localRotation, Quaternion.Inverse(capturer.transform.rotation), 200 * Time.deltaTime);
+            playerObject.transform.LookAt(capturer.transform);
+        }
+        else if(timer >= 5)
+        {
+            captureScript = capturer.GetComponent<EnemyAI>();
+            captureScript.anim.SetBool("KillingDone", true);
+        }
     }
 }
