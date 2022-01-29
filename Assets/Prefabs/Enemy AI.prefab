@@ -65,6 +65,7 @@ GameObject:
   - component: {fileID: 1771843573509338418}
   - component: {fileID: 1771843573509338383}
   - component: {fileID: 1771843573509338376}
+  - component: {fileID: 6480973794729805052}
   m_Layer: 0
   m_Name: Enemy AI
   m_TagString: Enemy
@@ -222,6 +223,19 @@ MonoBehaviour:
   deathTarget: {fileID: 1847823430}
   creepyFace: {fileID: 3870887837631753780}
   graphics: {fileID: 919132149568753149}
+--- !u!114 &6480973794729805052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771843573509338416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2157ac81621b804a8fa50b8dd932fd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAggroSoundPrefab: {fileID: 4703121616644056898, guid: c78a1895c41740244aef3cf79f03e69f, type: 3}
 --- !u!1 &7684623020132652887
 GameObject:
   m_ObjectHideFlags: 0

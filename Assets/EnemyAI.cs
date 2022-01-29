@@ -100,6 +100,8 @@ public class EnemyAI : MonoBehaviour
 
             if (distToTarget < sightRange)
             {
+                if (player == null && GetComponent<EnemyAggro>() != null) GetComponent<EnemyAggro>().PlayEnemyAggroSound();
+
                 player = colliders[i].transform;
             }
             else

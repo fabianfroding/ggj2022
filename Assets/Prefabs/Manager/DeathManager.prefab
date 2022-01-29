@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ce61afa9b2b4541afcf8aaba1f8276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDeathSoundPrefab: {fileID: 1337874197944274456, guid: e2c3377184b9e004885890667694566a, type: 3}
   alive: 1
   claw: {fileID: 0}
   capturer: {fileID: 0}
