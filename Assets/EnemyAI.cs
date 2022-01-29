@@ -19,6 +19,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     public Animator anim;
 
+
+    public GameObject deathTarget;
+
     void Start()
     {
         deathScript = GameObject.Find("DeathManager").GetComponent<DeathScript>();
@@ -51,7 +54,6 @@ public class EnemyAI : MonoBehaviour
     private void OnEnable()
     {
         player = null;
-        print("Hey brah");
     }
 
     void ChasePlayer()

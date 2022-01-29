@@ -5,9 +5,11 @@ public class MouseLook : MonoBehaviour
     [SerializeField] private float mouseSensitivity = 2f;
     private Transform playerBody;
     private float xRotation = 0f;
+    public Camera cam;
 
     private void Awake()
     {
+        cam = GetComponent<Camera>();
         playerBody = transform.parent;
     }
 

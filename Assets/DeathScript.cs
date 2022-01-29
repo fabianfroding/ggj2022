@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeathScript : MonoBehaviour
 {
     public bool alive = true;
-    MouseLook mouse;
+    MouseLook camera;
     GameObject playerObject;
     GameObject mouseObject;
     PlayerMovement player;
@@ -24,8 +24,10 @@ public class DeathScript : MonoBehaviour
     {
         mouseObject = GameObject.Find("Main Camera");
         playerObject = GameObject.Find("Player");
-        mouse = mouseObject.GetComponent<MouseLook>();
+        camera = mouseObject.GetComponent<MouseLook>();
         player = playerObject.GetComponent<PlayerMovement>();
+
+        claw.SetActive(false);
     }
 
     // Update is called once per frame
@@ -41,9 +43,9 @@ public class DeathScript : MonoBehaviour
 
     void AliveBool(bool alive)
     {
-        mouse.enabled = alive;
+        camera.enabled = alive;
         player.enabled = alive;
-        claw.SetActive(!alive);
+        //claw.SetActive(!alive);
         if (!alive)
         {
             DeathAnim();
@@ -52,21 +54,29 @@ public class DeathScript : MonoBehaviour
 
     void DeathAnim()
     {
-        claw.SetActive(true);
         Vector3 playerPos = playerObject.transform.position;
         timer += Time.deltaTime;
 
         playerObject.transform.position = new Vector3(playerPos.x, 2.8f, playerPos.z);
 
+        captureScript = capturer.GetComponent<EnemyAI>();
+
+        if(timer <= pickUpInterval)
+            claw.SetActive(true);
+        else
+            claw.SetActive(false);
+
         if (timer >= pickUpInterval)
         {
-            //playerObject.transform.position = new Vector3(playerPos.x, 2.8f, playerPos.z);
-            playerObject.transform.rotation = Quaternion.RotateTowards(playerObject.transform.localRotation, Quaternion.Inverse(capturer.transform.rotation), 200 * Time.deltaTime);
-            playerObject.transform.LookAt(capturer.transform);
+            mouseObject.transform.LookAt(captureScript.deathTarget.transform);
+            if(timer >= 4)
+            {
+                Camera.main.orthographic = true;
+                Camera.main.orthographicSize = Random.Range(0.5f, 0.8f);
+            }
         }
         else if(timer >= 5)
         {
-            captureScript = capturer.GetComponent<EnemyAI>();
             captureScript.anim.SetBool("KillingDone", true);
         }
     }
