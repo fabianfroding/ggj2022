@@ -464,9 +464,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 113115774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afc66da435c4da3438215944f70c1950, type: 3}
+  m_Script: {fileID: 11500000, guid: 699a0bea03efd2b48ad6cd8d758efbf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 113115776}
 --- !u!4 &207161537 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 524138486349595118, guid: b88e69b06ba1b8f4ba3eb8ab93d23a1c, type: 3}
@@ -8336,6 +8337,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 30228961148694062, guid: e81c5302fd6c67b4ebcb4fc5c4810053, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147733983225, guid: e81c5302fd6c67b4ebcb4fc5c4810053, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
