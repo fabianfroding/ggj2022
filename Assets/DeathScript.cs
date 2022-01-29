@@ -73,6 +73,7 @@ public class DeathScript : MonoBehaviour
             {
                 Camera.main.orthographic = true;
                 Camera.main.orthographicSize = Random.Range(0.5f, 0.8f);
+                captureScript.ScareEvent();
             }
         }
         else if(timer >= 5)

@@ -21,11 +21,23 @@ public class EnemyAI : MonoBehaviour
 
 
     public GameObject deathTarget;
+    [SerializeField]
+    GameObject creepyFace;
+    [SerializeField]
+    GameObject graphics;
+    
 
     void Start()
     {
         deathScript = GameObject.Find("DeathManager").GetComponent<DeathScript>();
         agent = GetComponent<NavMeshAgent>();
+        creepyFace.SetActive(false);
+    }
+
+    public void ScareEvent()
+    {
+        creepyFace.SetActive(true);
+        graphics.SetActive(false);
     }
 
     void Update()
