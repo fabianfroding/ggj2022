@@ -886,8 +886,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   darkWorldParentGO: {fileID: 2019876635}
   lightWorldParentGO: {fileID: 812265547}
-  enterLightWorldSound: {fileID: 0}
-  enterDarkWorldSound: {fileID: 0}
+  enterLightWorldSound: {fileID: 809965370}
+  enterDarkWorldSound: {fileID: 809965370}
+  skyboxDark: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
+  skyboxLight: {fileID: 2100000, guid: 169a1b8f06c17c84e8de491f2bfef986, type: 2}
+  test: 0
 --- !u!1 &463160575 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 602609422239632318, guid: e81c5302fd6c67b4ebcb4fc5c4810053, type: 3}

@@ -11,9 +11,9 @@ public class DarkWorldManager : MonoBehaviour
     private static DarkWorldManager instance;
 
     [SerializeField]
-    Skybox skyboxDark;
+    Material skyboxDark;
     [SerializeField]
-    Skybox skyboxLight;
+    Material skyboxLight;
 
     [SerializeField]
     float test;
@@ -46,6 +46,7 @@ public class DarkWorldManager : MonoBehaviour
     {
         darkWorldParentGO.SetActive(false);
         lightWorldParentGO.SetActive(true);
+        InitializeStart();
     }
 
     public bool IsActive()
@@ -60,15 +61,22 @@ public class DarkWorldManager : MonoBehaviour
 
         if (val)
         {
-            //RenderSettings.skybox = skyboxDark;
+            RenderSettings.skybox = skyboxDark;
             enterDarkWorldSound.Play();
             AmbienceSound.Instance.PlayDarkWorldAmbience();
         }
         else
         {
-            //RenderSettings.skybox = skyboxLight;
+            RenderSettings.skybox = skyboxLight;
             enterLightWorldSound.Play();
             AmbienceSound.Instance.PlayLightWorldAmbience();
         }
+    }
+
+    void InitializeStart()
+    {
+        RenderSettings.skybox = skyboxLight;
+        enterLightWorldSound.Play();
+        AmbienceSound.Instance.PlayLightWorldAmbience();
     }
 }
