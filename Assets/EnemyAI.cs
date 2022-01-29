@@ -51,7 +51,7 @@ public class EnemyAI : MonoBehaviour
     private void OnEnable()
     {
         player = null;
-        print("Hey brah");
+        //print("Hey brah");
     }
 
     void ChasePlayer()
@@ -96,5 +96,10 @@ public class EnemyAI : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+    }
+
+    public bool HasTarget()
+    {
+        return player != null;
     }
 }
