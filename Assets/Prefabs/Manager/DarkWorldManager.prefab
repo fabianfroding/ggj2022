@@ -49,6 +49,9 @@ MonoBehaviour:
   lightWorldParentGO: {fileID: 0}
   enterLightWorldSound: {fileID: 6609332870273498007}
   enterDarkWorldSound: {fileID: 8020158361371120639}
+  skyboxDark: {fileID: 2100000, guid: ceb0a3ed2cb53a94fa21843cc958c52b, type: 2}
+  skyboxLight: {fileID: 2100000, guid: 77715b8b6b248994891d3ccad1ad330b, type: 2}
+  test: 0
 --- !u!82 &6609332870273498007
 AudioSource:
   m_ObjectHideFlags: 0
