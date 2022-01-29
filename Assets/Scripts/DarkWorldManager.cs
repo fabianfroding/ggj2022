@@ -5,6 +5,9 @@ public class DarkWorldManager : MonoBehaviour
     [SerializeField] private GameObject darkWorldParentGO;
     [SerializeField] private GameObject lightWorldParentGO;
 
+    [SerializeField] private AudioSource enterLightWorldSound;
+    [SerializeField] private AudioSource enterDarkWorldSound;
+
     private static DarkWorldManager instance;
     public static DarkWorldManager Instance
     {
@@ -49,10 +52,12 @@ public class DarkWorldManager : MonoBehaviour
 
         if (val)
         {
+            enterDarkWorldSound.Play();
             AmbienceSound.Instance.PlayDarkWorldAmbience();
         }
         else
         {
+            enterLightWorldSound.Play();
             AmbienceSound.Instance.PlayLightWorldAmbience();
         }
     }
