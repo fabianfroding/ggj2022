@@ -6,6 +6,6 @@ public class EnemyAggro : MonoBehaviour
 
     public void PlayEnemyAggroSound()
     {
-        Instantiate(enemyAggroSoundPrefab, transform);
+        Instantiate(enemyAggroSoundPrefab, GameObject.Find("Player").transform);
     }
 }

@@ -67,6 +67,7 @@ public class DarkWorldManager : MonoBehaviour
         if (val)
         {
             RenderSettings.skybox = skyboxDark;
+            transform.position = GameObject.Find("Player").transform.position;
             enterDarkWorldSound.Play();
             AmbienceSound.Instance.StopAmbience();
 
@@ -79,6 +80,7 @@ public class DarkWorldManager : MonoBehaviour
         else
         {
             RenderSettings.skybox = skyboxLight;
+            transform.position = GameObject.Find("Player").transform.position;
             enterLightWorldSound.Play();
             AmbienceSound.Instance.PlayLightWorldAmbience();
 

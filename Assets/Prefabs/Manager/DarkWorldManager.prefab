@@ -49,6 +49,9 @@ MonoBehaviour:
   lightWorldParentGO: {fileID: 0}
   enterLightWorldSound: {fileID: 6609332870273498007}
   enterDarkWorldSound: {fileID: 8020158361371120639}
+  skyboxDark: {fileID: 0}
+  skyboxLight: {fileID: 0}
+  LevelDesignMap: 0
 --- !u!82 &6609332870273498007
 AudioSource:
   m_ObjectHideFlags: 0
@@ -61,7 +64,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fc44f51745d98214abd496803f3912e1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -157,7 +160,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7c1a687a5ffc1644590ed2522c16c394, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
