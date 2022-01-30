@@ -8,9 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: e7fce4b955e64e545b4b1958df8814d1
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Sample-RivinduTest.unity
     guid: 68c33594d5ceae14e8059dc5d526c566
@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 196bde756dc003c46b641b0d4835720a
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 3d8f3de918d9b8a4995718cd6eda7593
   m_configObjects: {}
