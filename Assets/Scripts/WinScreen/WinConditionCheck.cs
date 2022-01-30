@@ -9,7 +9,13 @@ public class WinConditionCheck : MonoBehaviour
     [SerializeField] private Animator blackoutScreenAnim;
     [SerializeField] private float waitTime = 2f;
     // Start is called before the first frame update
-   
+
+    private void Start()
+    {
+        blackoutScreenAnim = GameObject.Find("CrossFade").GetComponent<Animator>();
+        clm = FindObjectOfType<CatLifeManager>();
+    }
+
 
     // Update is called once per frame
     void Update()
