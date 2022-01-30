@@ -25,7 +25,10 @@ public class EnemyAI : MonoBehaviour
     GameObject creepyFace;
     [SerializeField]
     GameObject graphics;
-    
+
+    [SerializeField]
+    GameObject footSND;
+    GameObject soundFX;
 
     void Start()
     {
@@ -47,7 +50,9 @@ public class EnemyAI : MonoBehaviour
         if(deathScript.alive)
         {
             if (player != null)
+            {
                 ChasePlayer();
+            }
             else
             {
                 Idle();
@@ -56,13 +61,13 @@ public class EnemyAI : MonoBehaviour
             FindTarget();
 
             //playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerMask);
+
         }
         else
         {
             agent.enabled = false;
             KillingPlayer();
         }
-
     }
 
     private void OnEnable()
@@ -74,6 +79,9 @@ public class EnemyAI : MonoBehaviour
     {
         anim.SetBool("Walking", true);
 
+        if (soundFX == null)
+            soundFX = Instantiate(footSND);
+
         agent.enabled = true;
         if (player != null)
             agent.SetDestination(player.position);
@@ -82,12 +90,19 @@ public class EnemyAI : MonoBehaviour
 
     void KillingPlayer()
     {
+
+        Destroy(soundFX);
+        soundFX = null;
+
         anim.SetBool("Killing", true);
         anim.SetBool("Walking", false);
     }
 
     void Idle()
     {
+        Destroy(soundFX);
+            soundFX = null;
+
         anim.SetBool("Walking", false);
         agent.enabled = false;
     }
