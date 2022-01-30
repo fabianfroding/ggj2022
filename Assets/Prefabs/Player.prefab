@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618d05925f55df14c86d6c0f232b5149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightWorldAmbience: {fileID: 8300000, guid: ba97caf2a806bc44b8574e7b3cbca326, type: 3}
+  lightWorldAmbience: {fileID: 8300000, guid: 15940941ecd5d5b41aa51384688bec71, type: 3}
   darkWorldAmbience: {fileID: 8300000, guid: 1b831b153a234bc40ad69059ab586cbc, type: 3}
 --- !u!1 &30228959917956632
 GameObject:
