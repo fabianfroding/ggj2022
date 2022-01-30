@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class DeathScript : MonoBehaviour
 {
     public bool alive = true;
+    public bool executed;
     GameObject playerObject;
     GameObject mouseObject;
     PlayerMovement player;
@@ -27,7 +28,7 @@ public class DeathScript : MonoBehaviour
     [SerializeField]
     float scareInterval = 3;
 
-    float gameOverInterval = 7;
+    float gameOverInterval = 9;
 
     [SerializeField]
     GameObject playerDeathSoundPrefab;
@@ -55,11 +56,6 @@ public class DeathScript : MonoBehaviour
     void Update()
     {
         AliveBool(alive);
-
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            alive = false;
-        }
     }
 
     void AliveBool(bool alive)
@@ -127,6 +123,8 @@ public class DeathScript : MonoBehaviour
         captureScript.ScareEvent(true);
         if (GameObject.Find("SND_Player_Death(Clone)") == null)
             GameObject.Instantiate(playerDeathSoundPrefab);
+
+        executed = true;
     }
 
     void NormalCam()

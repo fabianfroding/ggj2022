@@ -31,16 +31,6 @@ public class PlayerDeathHandler : MonoBehaviour
         InitializeBones();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.J))
-        {
-        }
-
-    }
-
-
     public void Gripped(bool gripped)
     {
         if(gripped)

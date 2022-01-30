@@ -29,4 +29,10 @@ public class MusicManager : MonoBehaviour
         if (lightWorldMusic != null && lightWorldMusic.isPlaying) lightWorldMusic.Pause();
         if (darkWorldMusic != null && !darkWorldMusic.isPlaying) darkWorldMusic.Play();
     }
+
+    public void PauseAllMusic()
+    {
+        if (lightWorldMusic != null && lightWorldMusic.isPlaying) lightWorldMusic.Stop();
+        if (darkWorldMusic != null && darkWorldMusic.isPlaying) darkWorldMusic.Stop();
+    }
 }

@@ -10,11 +10,27 @@ public class DarkWorldController : MonoBehaviour
     //Adding the animator component of the Blackout Screen
     [SerializeField] private Animator blackoutScreenAnim;
 
+    DeathScript death;
+
+    private void Start()
+    {
+        death = GameObject.Find("DeathManager").GetComponent<DeathScript>();
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(darkWorldSwitckKey))
+        if(death.alive)
         {
-            StartCoroutine(SwitchEnvironments());
+            if (Input.GetKeyDown(darkWorldSwitckKey))
+            {
+                StartCoroutine(SwitchEnvironments());
+            }
+        }
+
+
+        if(death.executed)
+        {
+            MusicManager.Instance.PauseAllMusic();
         }
     }
 
@@ -30,14 +46,16 @@ public class DarkWorldController : MonoBehaviour
 
     private void SwitchMusic()
     {
-        
-        if (!DarkWorldManager.Instance.IsActive())
+        if(!death.executed)
         {
-            MusicManager.Instance.PlayLightWorldMusic();
-        }
-        else
-        {
-            MusicManager.Instance.PlayDarkWorldMusic();
+            if (!DarkWorldManager.Instance.IsActive())
+            {
+                MusicManager.Instance.PlayLightWorldMusic();
+            }
+            else
+            {
+                MusicManager.Instance.PlayDarkWorldMusic();
+            }
         }
     }
 }
