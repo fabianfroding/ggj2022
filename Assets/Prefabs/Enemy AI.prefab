@@ -225,7 +225,6 @@ MonoBehaviour:
   creepyFace: {fileID: 3870887837631753780}
   graphics: {fileID: 919132149568753149}
   footSND: {fileID: 4703121616644056898, guid: c78a1895c41740244aef3cf79f03e69f, type: 3}
-  soundFX: {fileID: 4703121616644056898, guid: c78a1895c41740244aef3cf79f03e69f, type: 3}
 --- !u!114 &6480973794729805052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,7 +962,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 149164f8cb65db5488743cfe30e3d95b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2e76d51ccba85e2448544d1bb2f56fc0, type: 2}
+      objectReference: {fileID: 2100000, guid: 2471ecc1f863274478bf6949ad4f991e, type: 2}
     - target: {fileID: 919132149155446097, guid: 149164f8cb65db5488743cfe30e3d95b, type: 3}
       propertyPath: m_Name
       value: creepy banana

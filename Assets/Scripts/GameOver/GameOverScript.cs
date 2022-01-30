@@ -16,7 +16,7 @@ public class GameOverScript : MonoBehaviour
     public void RestartGame()
     {
         //loads the Test Scene
-        SceneManager.LoadScene(sceneName: "Rivindu-NewScene");
+        SceneManager.LoadScene(sceneName: "Level Design");
     }
 
     public void GoToMainMenu()
