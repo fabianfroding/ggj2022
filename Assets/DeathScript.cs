@@ -75,7 +75,6 @@ public class DeathScript : MonoBehaviour
 
     void DeathAnim()
     {
-        Vector3 playerPos = playerObject.transform.position;
         timer += Time.deltaTime;
 
 

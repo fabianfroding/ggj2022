@@ -9,7 +9,7 @@ public class CatLifeCollectible : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             CatLifeManager.Instance.AddCollectedCat();
-            GameObject.Instantiate(catPickupSoundPrefab);
+            GameObject g = GameObject.Instantiate(catPickupSoundPrefab, GameObject.Find("Player").transform);
             Destroy(gameObject);
             print("Collision");
         }

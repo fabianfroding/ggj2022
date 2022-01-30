@@ -36,7 +36,9 @@ public class EnemyAI : MonoBehaviour
 
     public void ScareEvent(bool active)
     {
-        creepyFace.SetActive(active);
+        if(creepyFace != null)
+            creepyFace.SetActive(active);
+        if(graphics != null)
         graphics.SetActive(!active);
     }
 
