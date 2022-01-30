@@ -30,11 +30,14 @@ public class EnemyAI : MonoBehaviour
     GameObject footSND;
     GameObject soundFX;
 
+    AudioSource footprintsS;
+
     void Start()
     {
         deathScript = GameObject.Find("DeathManager").GetComponent<DeathScript>();
         agent = GetComponent<NavMeshAgent>();
         ScareEvent(false);
+        footprintsS = GetComponent<AudioSource>();
     }
 
     public void ScareEvent(bool active)
@@ -68,6 +71,14 @@ public class EnemyAI : MonoBehaviour
             agent.enabled = false;
             KillingPlayer();
         }
+
+        if (!footprintsS.isPlaying && anim.GetBool("Walking")) {
+            footprintsS.Play();
+        }
+        else if (!anim.GetBool("Walking"))
+        {
+            footprintsS.Stop();
+        }
     }
 
     private void OnEnable()
@@ -79,8 +90,8 @@ public class EnemyAI : MonoBehaviour
     {
         anim.SetBool("Walking", true);
 
-        if (soundFX == null)
-            soundFX = Instantiate(footSND);
+        //if (soundFX == null)
+        //    soundFX = Instantiate(footSND, GameObject.Find("Player").transform);
 
         agent.enabled = true;
         if (player != null)
