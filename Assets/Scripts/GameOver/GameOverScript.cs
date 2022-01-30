@@ -12,7 +12,15 @@ public class GameOverScript : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
+
+    private IEnumerator ReenableCursor()
+    {
+        yield return new WaitForSeconds(1f);
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     public void RestartGame()
     {
         //loads the Test Scene

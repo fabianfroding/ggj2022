@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadScene(sceneName: "Level Design");

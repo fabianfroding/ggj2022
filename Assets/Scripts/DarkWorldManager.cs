@@ -68,12 +68,12 @@ public class DarkWorldManager : MonoBehaviour
         {
             RenderSettings.skybox = skyboxDark;
             enterDarkWorldSound.Play();
-            AmbienceSound.Instance.PlayDarkWorldAmbience();
+            AmbienceSound.Instance.StopAmbience();
 
             if(LevelDesignMap)
             {
-                dirLight.color = Color.black;
-                
+                dirLight.color = new Color(0.2f, 0.2f, 0.2f, 1);
+                dirLight.intensity = 0.1f;
             }
         }
         else
@@ -85,6 +85,7 @@ public class DarkWorldManager : MonoBehaviour
             if (LevelDesignMap)
             {
                 dirLight.color = Color.white;
+                dirLight.intensity = 1f;
 
             }
         }

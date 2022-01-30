@@ -3,7 +3,6 @@ using UnityEngine;
 public class AmbienceSound : MonoBehaviour
 {
     [SerializeField] private AudioClip lightWorldAmbience;
-    [SerializeField] private AudioClip darkWorldAmbience;
     private AudioSource audioSrc;
 
     private static AmbienceSound instance;
@@ -36,10 +35,8 @@ public class AmbienceSound : MonoBehaviour
         audioSrc.Play();
     }
 
-    public void PlayDarkWorldAmbience()
+    public void StopAmbience()
     {
         audioSrc.Stop();
-        audioSrc.clip = darkWorldAmbience;
-        audioSrc.Play();
     }
 }

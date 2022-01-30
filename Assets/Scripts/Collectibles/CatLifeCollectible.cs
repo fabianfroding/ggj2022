@@ -11,7 +11,7 @@ public class CatLifeCollectible : MonoBehaviour
             CatLifeManager.Instance.AddCollectedCat();
             GameObject g = GameObject.Instantiate(catPickupSoundPrefab, GameObject.Find("Player").transform);
             Destroy(gameObject);
-            print("Collision");
+            //print("Collision");
         }
     }
 }

@@ -40,7 +40,7 @@ public class DarkWorldController : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         GrayscaleManager.Instance.ChangeToGreyscale(!GrayscaleManager.Instance.IsInGrayscaleMode());
         DarkWorldManager.Instance.ActivateDarkWorld(!DarkWorldManager.Instance.IsActive());
-        Debug.Log("SwitchMusic");
+        //Debug.Log("SwitchMusic");
         SwitchMusic();
     }
 
