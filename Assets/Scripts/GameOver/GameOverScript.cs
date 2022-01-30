@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameOverScript : MonoBehaviour
 {
-    [SerializeField] private float waitTime;
-    [SerializeField] private Animator transitionAnim;
+    //[SerializeField] private float waitTime;
+    //[SerializeField] private Animator transitionAnim;
     // Start is called before the first frame update
 
     private void Start()
@@ -16,7 +16,7 @@ public class GameOverScript : MonoBehaviour
     public void RestartGame()
     {
         //loads the Test Scene
-        SceneManager.LoadScene(sceneName: "Sample-RivinduTest");
+        SceneManager.LoadScene(sceneName: "Rivindu-NewScene");
     }
 
     public void GoToMainMenu()

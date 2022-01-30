@@ -318,6 +318,7 @@ GameObject:
   - component: {fileID: 30228961148694061}
   - component: {fileID: 30228961148694060}
   - component: {fileID: 30228961148694034}
+  - component: {fileID: -4453607434763472719}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -472,7 +473,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d79f883f6308f46829d5c6aac91a8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 2
+  blackoutScreenAnim: {fileID: 0}
   playerDeathSoundPrefab: {fileID: 1337874197944274456, guid: e2c3377184b9e004885890667694566a, type: 3}
+--- !u!114 &-4453607434763472719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30228961148694058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12f65c2b9f1c8e4cb9d0fe23b897785, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clm: {fileID: 0}
+  tot_collectables: 9
+  blackoutScreenAnim: {fileID: 0}
+  waitTime: 2
 --- !u!95 &1540510732
 Animator:
   serializedVersion: 3
