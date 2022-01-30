@@ -7,7 +7,7 @@ public class MenuScript : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene(sceneName: "SampleScene");
+        SceneManager.LoadScene(sceneName: "Level Design");
     }
 
     public void QuitGame()
