@@ -13,7 +13,7 @@ public class MenuScript : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(sceneName: "Level Design");
+        SceneManager.LoadScene(sceneName: EditorConstants.SCENE_NAME_SAMPLE_LEVEL);
     }
 
     public void QuitGame()

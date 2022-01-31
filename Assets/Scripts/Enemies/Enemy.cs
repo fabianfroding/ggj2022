@@ -4,11 +4,6 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject appearSFX;
 
-    private void Update()
-    {
-        
-    }
-
     private void OnEnable()
     {
         GameObject sfx = Instantiate(appearSFX, transform);

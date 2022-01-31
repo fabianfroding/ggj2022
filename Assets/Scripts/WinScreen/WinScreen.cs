@@ -23,7 +23,7 @@ public class WinScreen : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene(sceneName: "MainMenu");
+        SceneManager.LoadScene(sceneName: EditorConstants.SCENE_NAME_MAIN_MENU);
 
     }
 }

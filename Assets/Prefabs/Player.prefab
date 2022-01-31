@@ -463,7 +463,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   darkWorldSwitckKey: 9
   waitTime: 2
-  blackoutScreenAnim: {fileID: 0}
 --- !u!114 &30228961148694034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,7 +475,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d79f883f6308f46829d5c6aac91a8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 2
   blackoutScreenAnim: {fileID: 0}
   playerDeathSoundPrefab: {fileID: 1337874197944274456, guid: e2c3377184b9e004885890667694566a, type: 3}
 --- !u!82 &-1586267256608113236
@@ -1670,7 +1668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fcf5520b6939e814fa47026c49becd61, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.19
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fcf5520b6939e814fa47026c49becd61, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1710,7 +1708,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a2ea67b2409c9c444a4a2ea8d37bcb3f, type: 2}
     - target: {fileID: 919132149155446097, guid: fcf5520b6939e814fa47026c49becd61, type: 3}
       propertyPath: m_Name
-      value: The Paw!
+      value: CamPaw
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fcf5520b6939e814fa47026c49becd61, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: fcf5520b6939e814fa47026c49becd61, type: 3}
       propertyPath: m_LocalScale.x

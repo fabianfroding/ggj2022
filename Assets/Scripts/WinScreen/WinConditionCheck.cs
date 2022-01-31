@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class WinConditionCheck : MonoBehaviour
 {
-    [SerializeField] private CatLifeManager clm;
+    [SerializeField] private CatStatueManager clm;
     [SerializeField] private int tot_collectables;
     [SerializeField] private Animator blackoutScreenAnim;
     [SerializeField] private float waitTime = 2f;
@@ -13,7 +13,7 @@ public class WinConditionCheck : MonoBehaviour
     private void Start()
     {
         blackoutScreenAnim = GameObject.Find("CrossFade").GetComponent<Animator>();
-        clm = FindObjectOfType<CatLifeManager>();
+        clm = FindObjectOfType<CatStatueManager>();
     }
 
 
@@ -25,7 +25,7 @@ public class WinConditionCheck : MonoBehaviour
 
     private void checkCollectedCatCount()
     {
-        if(clm.collectedCats == tot_collectables )
+        if(clm.collectedStatues == tot_collectables )
         {
             tot_collectables = 0;
             StartCoroutine(jumpToWinScene());
@@ -37,6 +37,6 @@ public class WinConditionCheck : MonoBehaviour
         blackoutScreenAnim.Play("CrossFadeStart");
         yield return new WaitForSeconds(waitTime);
         //load winScreen
-        SceneManager.LoadScene(sceneName: "WinScene");
+        SceneManager.LoadScene(sceneName: EditorConstants.SCENE_NAME_LEVEL_COMPLETE);
     }
 }
