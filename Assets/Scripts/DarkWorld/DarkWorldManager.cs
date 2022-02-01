@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,13 +6,16 @@ public class DarkWorldManager : MonoBehaviour
 {
     public bool IsActive { get; private set; }
 
-    [SerializeField] private AudioSource enterLightWorldSound;
-    [SerializeField] private AudioSource enterDarkWorldSound;
+    [SerializeField] private GameObject enterLightWorldSoundPrefab;
+    [SerializeField] private GameObject enterDarkWorldSoundPrefab;
     [SerializeField] private Material skyboxDark;
     [SerializeField] private Material skyboxLight;
+    [SerializeField] KeyCode darkWorldTransitionKey;
+    [SerializeField] float transitionDelay = 2f;
 
     public List<GameObject> darkWorldObjects { get; private set; }
     private Light dirLight;
+    private bool isTransitioning = false;
 
     private static DarkWorldManager instance;
     public static DarkWorldManager Instance
@@ -26,6 +30,7 @@ public class DarkWorldManager : MonoBehaviour
         }
     }
 
+    #region Unity Callback Functions
     private void Awake()
     {
         IsActive = false;
@@ -37,39 +42,74 @@ public class DarkWorldManager : MonoBehaviour
         EnableDarkWorldObjects(false);
 
         InitializeStart();
-        dirLight = GameObject.Find("Directional Light").GetComponent<Light>();
+        dirLight = GameObject.Find("Directional Light").GetComponent<Light>(); // TODO: Remove string literal.
+    }
+
+    private void Update()
+    {
+        HandleInput();
+    }
+    #endregion
+
+    private void HandleInput()
+    {
+        if (Input.GetKeyDown(darkWorldTransitionKey) && !isTransitioning)
+        {
+            StartCoroutine(SwitchEnvironments(transitionDelay));
+        }
+    }
+
+    private IEnumerator SwitchEnvironments(float delay)
+    {
+        isTransitioning = true;
+        GameObject.Find(EditorConstants.GAME_OBJECT_NAME_CROSS_FADE).GetComponent<Animator>().Play(AnimationConstants.ANIM_CROSS_FADE_START);
+        yield return new WaitForSeconds(delay);
+        GrayscaleManager.Instance.ChangeToGreyscale(!GrayscaleManager.Instance.IsInGrayscaleMode());
+        ActivateDarkWorld(!IsActive);
+        SwitchMusic();
+        isTransitioning = false;
+    }
+
+    private void SwitchMusic()
+    {
+        if (!DeathManager.Instance.executed)
+        {
+            if (!IsActive)
+            {
+                MusicManager.Instance.PlayLightWorldMusic();
+            }
+            else
+            {
+                MusicManager.Instance.PlayDarkWorldMusic();
+            }
+        }
     }
 
     public void ActivateDarkWorld(bool val)
     {
         IsActive = val;
         EnableDarkWorldObjects(val);
+        SetWorldEnvSettings(val);
+    }
 
-        if (val)
+    private void SetWorldEnvSettings(bool darkWorld)
+    {
+        RenderSettings.skybox = darkWorld ? skyboxDark : skyboxLight;
+        if (dirLight != null)
         {
-            RenderSettings.skybox = skyboxDark;
-            transform.position = GameObject.Find("Player").transform.position; // To allow hearing the sound.
-            enterDarkWorldSound.Play();
-            AmbienceSound.Instance.StopAmbience();
+            dirLight.color = darkWorld ? new Color(0.2f, 0.2f, 0.2f, 1) : Color.white;
+            dirLight.intensity = darkWorld ? 0.1f : 1f;
+        }
 
-            if(dirLight != null)
-            {
-                dirLight.color = new Color(0.2f, 0.2f, 0.2f, 1);
-                dirLight.intensity = 0.1f;
-            }
+        if (darkWorld)
+        {
+            Instantiate(enterDarkWorldSoundPrefab, Camera.main.transform);
+            AmbienceSound.Instance.StopAmbience();
         }
         else
         {
-            RenderSettings.skybox = skyboxLight;
-            transform.position = GameObject.Find("Player").transform.position;
-            enterLightWorldSound.Play();
+            Instantiate(enterLightWorldSoundPrefab, Camera.main.transform);
             AmbienceSound.Instance.PlayLightWorldAmbience();
-
-            if (dirLight != null)
-            {
-                dirLight.color = Color.white;
-                dirLight.intensity = 1f;
-            }
         }
     }
 
@@ -101,7 +141,6 @@ public class DarkWorldManager : MonoBehaviour
     void InitializeStart()
     {
         RenderSettings.skybox = skyboxLight;
-        //enterLightWorldSound.Play();
         AmbienceSound.Instance.PlayLightWorldAmbience();
     }
 }

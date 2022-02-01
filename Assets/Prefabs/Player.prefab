@@ -315,7 +315,6 @@ GameObject:
   - component: {fileID: 30228961148694057}
   - component: {fileID: 30228961148694035}
   - component: {fileID: 30228961148694061}
-  - component: {fileID: 30228961148694060}
   - component: {fileID: 30228961148694034}
   - component: {fileID: -1586267256608113236}
   - component: {fileID: 1831188303}
@@ -449,20 +448,6 @@ MonoBehaviour:
   jumpHeight: 2.5
   footsteps: {fileID: -1586267256608113236}
   dead: 0
---- !u!114 &30228961148694060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 30228961148694058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6ec56e1ab9d77a4585ac554648b04ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  darkWorldSwitckKey: 9
-  waitTime: 2
 --- !u!114 &30228961148694034
 MonoBehaviour:
   m_ObjectHideFlags: 0

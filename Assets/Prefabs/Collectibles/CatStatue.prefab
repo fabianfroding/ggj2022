@@ -4824,7 +4824,6 @@ GameObject:
   - component: {fileID: 1936817578951130396}
   - component: {fileID: 1323643384604181755}
   - component: {fileID: 6293641880060835095}
-  - component: {fileID: 106673556063993280}
   m_Layer: 8
   m_Name: CatStatue
   m_TagString: Untagged
@@ -4875,18 +4874,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectStatueSoundPrefab: {fileID: 4378757287909989593, guid: ec767e90a01582a4eb9dc7123f326b88, type: 3}
---- !u!114 &106673556063993280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1936817578951130397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaeca1a114e592f49932ef6c1f0007bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1936817579876276451
 GameObject:
   m_ObjectHideFlags: 0

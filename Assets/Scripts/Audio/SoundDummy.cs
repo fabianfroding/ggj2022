@@ -1,22 +1,21 @@
 using UnityEngine;
 
+// This script can be attached to spawned sound prefabs instead of having an AudioSourceComponent on the triggering/parent game object.
+// This ensures that the sound will finish playing even after the triggering/parent game object has been destroyed.
 public class SoundDummy : MonoBehaviour
 {
+    [Tooltip("Determines if the created sound should stay in the spawned position or follow the parent game object.")]
+    [SerializeField] private bool detachFromParent = true;
+
     private void Start()
     {
-        gameObject.transform.parent = null;
+        if (detachFromParent) gameObject.transform.parent = null;
 
-        // TODO: Cleanup
-        if (gameObject.name == "SND_FootstepsEnemy")
+        AudioSource audioSource = GetComponent<AudioSource>();
+        if (audioSource != null)
         {
-            gameObject.transform.parent = GameObject.Find("Player").transform;
-        }
-
-        AudioSource aSrc = GetComponent<AudioSource>();
-        if (aSrc != null)
-        {
-            aSrc.Play();
-            Destroy(gameObject, aSrc.clip.length);
+            audioSource.Play();
+            Destroy(gameObject, audioSource.clip.length);
         }
         else
         {

@@ -14,36 +14,21 @@ public class EnemyAI : MonoBehaviour
     public LayerMask playerMask = 6;
 
     bool playerInSightRange;
-
-    [SerializeField]
-    public Animator anim;
-
-
     public GameObject deathTarget;
-    [SerializeField]
-    GameObject creepyFace;
-    [SerializeField]
-    GameObject graphics;
 
-    [SerializeField]
-    GameObject footSND;
+    [SerializeField] GameObject creepyFace;
+    [SerializeField] GameObject graphics;
+    [SerializeField] public Animator anim;
+
     GameObject soundFX;
-
     AudioSource footprintsS;
 
+    #region Unity Callback Functions
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         ScareEvent(false);
         footprintsS = GetComponent<AudioSource>();
-    }
-
-    public void ScareEvent(bool active)
-    {
-        if(creepyFace != null)
-            creepyFace.SetActive(active);
-        if(graphics != null)
-        graphics.SetActive(!active);
     }
 
     void Update()
@@ -60,9 +45,7 @@ public class EnemyAI : MonoBehaviour
             }
 
             FindTarget();
-
             //playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerMask);
-
         }
         else
         {
@@ -70,13 +53,7 @@ public class EnemyAI : MonoBehaviour
             KillingPlayer();
         }
 
-        if (!footprintsS.isPlaying && anim.GetBool("Walking")) {
-            footprintsS.Play();
-        }
-        else if (!anim.GetBool("Walking"))
-        {
-            footprintsS.Stop();
-        }
+        PlayFootstepSound();
     }
 
     private void OnEnable()
@@ -84,12 +61,41 @@ public class EnemyAI : MonoBehaviour
         player = null;
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, sightRange);
+    }
+    #endregion
+
+    private void PlayFootstepSound()
+    {
+        if (IsWalking() && !footprintsS.isPlaying)
+        {
+            footprintsS.Play();
+        }
+        else if (!IsWalking() && footprintsS.isPlaying)
+        {
+            footprintsS.Stop();
+        }
+    }
+
+    private bool IsWalking()
+    {
+        return anim.GetBool(AnimationConstants.ANIM_WALKING);
+    }
+
+    public void ScareEvent(bool active)
+    {
+        if (creepyFace != null)
+            creepyFace.SetActive(active);
+        if (graphics != null)
+            graphics.SetActive(!active);
+    }
+
     void ChasePlayer()
     {
-        anim.SetBool("Walking", true);
-
-        //if (soundFX == null)
-        //    soundFX = Instantiate(footSND, GameObject.Find("Player").transform);
+        anim.SetBool(AnimationConstants.ANIM_WALKING, true);
 
         agent.enabled = true;
         if (player != null)
@@ -103,8 +109,8 @@ public class EnemyAI : MonoBehaviour
         Destroy(soundFX);
         soundFX = null;
 
-        anim.SetBool("Killing", true);
-        anim.SetBool("Walking", false);
+        anim.SetBool(AnimationConstants.ANIM_KILLING, true);
+        anim.SetBool(AnimationConstants.ANIM_WALKING, false);
     }
 
     void Idle()
@@ -112,7 +118,7 @@ public class EnemyAI : MonoBehaviour
         Destroy(soundFX);
             soundFX = null;
 
-        anim.SetBool("Walking", false);
+        anim.SetBool(AnimationConstants.ANIM_WALKING, false);
         agent.enabled = false;
     }
 
@@ -120,7 +126,7 @@ public class EnemyAI : MonoBehaviour
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, sightRange, playerMask);
 
-        for (int i = 0; i < colliders.Length; i++) //make a loop to check whats there
+        for (int i = 0; i < colliders.Length; i++) // Make a loop to check whats there
         {
             float distToTarget = Vector3.Distance(colliders[i].transform.position, transform.position);
 
@@ -133,10 +139,5 @@ public class EnemyAI : MonoBehaviour
             else
                 player = null;
         }
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 }

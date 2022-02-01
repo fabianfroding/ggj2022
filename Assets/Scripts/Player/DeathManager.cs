@@ -52,7 +52,6 @@ public class DeathManager : MonoBehaviour
         if (claw != null) claw.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         AliveBool(alive);
@@ -95,7 +94,7 @@ public class DeathManager : MonoBehaviour
             }
             else if(timer > gameOverInterval)
             {
-                StartCoroutine(transitionToGameOverScreen());
+                StartCoroutine(TransitionToGameOverScreen());
             }
             else
             {
@@ -104,8 +103,7 @@ public class DeathManager : MonoBehaviour
         }
         else if(timer >= 5)
         {
-            // TODO: Remove string lit.
-            captureScript.anim.SetBool("KillingDone", true);
+            captureScript.anim.SetBool(AnimationConstants.ANIM_KILLING_DONE, true);
         }
 
         if(timer <= 5)
@@ -134,9 +132,9 @@ public class DeathManager : MonoBehaviour
         captureScript.ScareEvent(false);
     }
 
-    private IEnumerator transitionToGameOverScreen()
+    private IEnumerator TransitionToGameOverScreen()
     {
-        GameObject.Find(EditorConstants.GAME_OBJECT_NAME_CROSS_FADE).GetComponent<Animator>().Play("CrossFadeStart"); // TODO: Remove string lit.
+        GameObject.Find(EditorConstants.GAME_OBJECT_NAME_CROSS_FADE).GetComponent<Animator>().Play(AnimationConstants.ANIM_CROSS_FADE_START);
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(EditorConstants.SCENE_NAME_GAME_OVER);
     }
