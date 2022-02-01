@@ -18,7 +18,7 @@ public class CatStatueManager : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void Start()
     {
         collectedStatues = 0;
         sceneStatues = CountStatuesInScene();
@@ -27,7 +27,7 @@ public class CatStatueManager : MonoBehaviour
     public void AddStatue()
     {
         collectedStatues++;
-        UICatStatues.Instance.SetCollected(collectedStatues);
+        UICatStatuesNew.Instance.SetFilledCircles(collectedStatues);
     }
 
     private int CountStatuesInScene()
