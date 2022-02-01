@@ -6,21 +6,18 @@ public class PlayerCollision : MonoBehaviour
 {
 
     //added wait time
-    [SerializeField] float waitTime = 2f;
+    //[SerializeField] float waitTime = 2f;
     //Adding the animator component of the Blackout Screen
     [SerializeField] private Animator blackoutScreenAnim;
     [SerializeField] private GameObject playerDeathSoundPrefab;
-
-    DeathScript deathScript;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            deathScript = GameObject.Find("DeathManager").GetComponent<DeathScript>();
-            deathScript.alive = false;
-            deathScript.capturer = collision.gameObject;
-            GameObject.Find("Player").GetComponent<PlayerMovement>().StopFootstepsSound();
+            DeathManager.Instance.alive = false;
+            DeathManager.Instance.capturer = collision.gameObject;
+            GameObject.Find(EditorConstants.TAG_PLAYER).GetComponent<PlayerMovement>().StopFootstepsSound();
             //StartCoroutine(transitionToGameOverScreen());
         }
     }
